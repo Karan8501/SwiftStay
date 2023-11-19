@@ -12,6 +12,7 @@ const BookingDetails = () => {
   const id = useParams().id;
   const [dates, setDates] = useState([]);
   const { isLoading, booking } = useSelector((state) => state.hotelState);
+
   const user = useSelector((state) => state.userState.user);
   const prices = booking?.room.pricePerDay * dates?.length;
   const vat = booking?.room.pricePerDay * dates?.length * (18 / 100);
@@ -47,41 +48,20 @@ const BookingDetails = () => {
                       Your details:
                     </h2>
                     <div className="flex items-center mb-4 ml-8">
-                      <label htmlFor="name" className="w-16 font-medium">
-                        Name:
-                      </label>
-                      <input
-                        value={user?.name}
-                        disabled={true}
-                        id="name"
-                        type="text"
-                        className="px-1 py-2 font-mono text-gray-700 border border-gray-400 border-solid rounded-md outline-none sm:px-2"
-                      />
+                      <span className="w-16 font-medium">Name:</span>
+                      <span className="font-mono text-gray-700">
+                        {user?.name}
+                      </span>
                     </div>
                     <div className="flex items-center mb-4 ml-8">
-                      <label htmlFor="email" className="w-16 font-medium">
-                        Email:
-                      </label>
-                      <input
-                        value={user?.email}
-                        id="email"
-                        type="email"
-                        className="px-1 py-2 font-mono text-gray-700 border border-gray-400 border-solid rounded-md outline-none sm:px-2"
-                        disabled={true}
-                      />
+                      <span className="w-16 font-medium">Email:</span>
+                      <span className="font-mono text-gray-700">
+                        {user?.email}
+                      </span>
                     </div>
                     <div className="flex items-center mb-4 ml-8">
-                      <label htmlFor="phone" className="w-16 font-medium">
-                        Mobile:
-                      </label>
-                      <input
-                        value={booking?.phone}
-                        disabled={true}
-                        placeholder="Your phone number"
-                        id="phone"
-                        type="number"
-                        className="px-1 py-2 font-mono border border-gray-400 border-solid rounded-md outline-none sm:px-2"
-                      />
+                      <span className="w-16 font-medium">Mobile:</span>
+                      <span className="font-mono">{booking?.phone}</span>
                     </div>
                   </div>
                   <div className="px-1 sm:px-3">
@@ -142,7 +122,6 @@ const BookingDetails = () => {
                     </div>
                     <div className="flex mb-4 ml-8">
                       <span className="inline-block font-medium w-28">
-                        {" "}
                         Status:
                       </span>
                       <span className="font-mono">{booking?.status}</span>
@@ -151,14 +130,7 @@ const BookingDetails = () => {
                       <span className="inline-block font-medium w-28">
                         Dates:
                       </span>
-                      <textarea
-                        value={dates?.toString()}
-                        disabled={false}
-                        id="phone"
-                        rows={dates.length + 1}
-                        cols={10}
-                        className="px-1 py-2 font-mono text-gray-700 break-all border border-gray-400 border-solid rounded-md resize-none sm:px-2"
-                      />
+                      <span className="font-mono">{dates?.toString()}</span>
                     </div>
                     <div className="flex mb-4 ml-8">
                       <span className="inline-block font-medium w-28">
@@ -182,7 +154,6 @@ const BookingDetails = () => {
                     </div>
                     <div className="flex mb-4 ml-8">
                       <span className="inline-block font-medium w-28">
-                        {" "}
                         Paid:
                       </span>
                       <span className="font-mono">

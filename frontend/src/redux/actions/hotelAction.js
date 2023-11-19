@@ -111,7 +111,7 @@ export const getUserBooking = (id) => async (dispatch) => {
   try {
     dispatch(setLoader(true));
 
-    const { data } = await axios.get(`/v1/me/booking/${id}`);
+    const { data } = await axios.get(`/api/v1/me/booking/${id}`);
 
     dispatch(setBooking(data.booking));
     dispatch(setLoader(false));

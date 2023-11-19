@@ -75,6 +75,7 @@ exports.createBooking = catchAsyncErrors(async (req, res, next) => {
     totalPrice,
     phone,
     paymentInfo,
+    status: "Complete",
     paidAt: Date.now(),
   });
 
